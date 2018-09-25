@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+## Allow user to create a sandbox project
+LoginScripter.Sandbox/*
+
 # User-specific files
 *.suo
 *.user
