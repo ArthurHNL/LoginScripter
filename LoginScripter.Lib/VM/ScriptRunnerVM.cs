@@ -20,12 +20,6 @@ namespace LoginScripter.Lib.VM
             Environment.Exit(0);
         }
 
-        public override void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            Console.WriteLine(propertyName);
-            base.RaisePropertyChanged(propertyName);
-        }
-
         private bool _finished;
         public bool Finished {
             get

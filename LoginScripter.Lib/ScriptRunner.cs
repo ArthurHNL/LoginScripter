@@ -75,7 +75,8 @@ namespace LoginScripter.Lib
                 var script = _scripts[i];
                 CurrentScriptName = script.FriendlyName;
                 CurrentScript = i + 1;
-                Console.WriteLine($"Now executing script {script.FriendlyName}. ({CurrentScript} / {_scripts.Count})");
+                Console.WriteLine($"Now executing script: \"{script.FriendlyName}\". ({CurrentScript} / {_scripts.Count})");
+                Console.WriteLine();
                 int res = -1;
                 try
                 {
@@ -84,8 +85,11 @@ namespace LoginScripter.Lib
                 {
                     Console.WriteLine($"ERROR: { e.StackTrace}");
                 }
-                Console.WriteLine($"Finished executing script {script.FriendlyName}. ({CurrentScript} / {_scripts.Count})");
+                Console.WriteLine();
+                Console.WriteLine($"Finished executing script: \"{script.FriendlyName}\". ({CurrentScript} / {_scripts.Count})");
                 Console.WriteLine($"Script exited with code {res}.");
+                Console.WriteLine();
+                Console.WriteLine();
                 Console.WriteLine();
             }
             CurrentScriptName = null;
