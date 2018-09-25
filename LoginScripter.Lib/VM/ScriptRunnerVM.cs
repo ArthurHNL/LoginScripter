@@ -17,7 +17,7 @@ namespace LoginScripter.Lib.VM
         public ICommand QuitCommand { get; private set; }
         private void Quit()
         {
-            throw new System.NotImplementedException();
+            Environment.Exit(0);
         }
 
         public override void RaisePropertyChanged([CallerMemberName] string propertyName = null)
