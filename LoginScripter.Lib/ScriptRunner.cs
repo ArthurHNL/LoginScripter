@@ -1,28 +1,27 @@
-﻿using LoginScripter.Lib.VM;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LoginScripter.Lib
 {
-    public class ScriptRunner
+    public class ScriptRunner : INotifyPropertyChanged
     {
-        private readonly ScriptRunnerVM _vm;
         private readonly IReadOnlyList<ILoginScript> _scripts;
+
+        private void RaisePropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         public ScriptRunner()
         {
             _scripts = ScriptContainer.Scripts.Where(s => s.Enabled).ToList();
-            _vm = new ScriptRunnerVM()
-            {
-                CurrentScript = 0,
-                TotalScripts = _scripts.Count,
-                CurrentScriptName = null,
-                Finished = false
-            };
         }
+
+        public int TotalScripts => _scripts.Count;
 
         private int _curr;
         private int CurrentScript
@@ -34,7 +33,7 @@ namespace LoginScripter.Lib
             set
             {
                 _curr = value;
-                _vm.CurrentScript = value;
+                RaisePropertyChanged("CurrentScript");
             }
         }
 
@@ -48,11 +47,14 @@ namespace LoginScripter.Lib
             set
             {
                 _currScriptName = value;
-                _vm.CurrentScriptName = value;
+                RaisePropertyChanged("CurrentScriptName");
             }
         }
 
         private bool _finished = false;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private bool Finished
         {
             get
@@ -62,7 +64,7 @@ namespace LoginScripter.Lib
             set
             {
                 _finished = value;
-                _vm.Finished = value;
+                RaisePropertyChanged("Finished");
             }
         }
                
