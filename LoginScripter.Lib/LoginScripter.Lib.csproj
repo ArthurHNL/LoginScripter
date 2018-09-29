@@ -63,9 +63,9 @@
     <Compile Include="ILoginScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptRunner.cs" />
-    <Compile Include="Scripts\ClearDownloads.cs" />
-    <Compile Include="Scripts\SayByeScript.cs" />
-    <Compile Include="Scripts\SayHiScript.cs" />
+    <Compile Include="Scripts\ClearDirectories.cs" />
+    <Compile Include="Scripts\PruneDownloads.cs" />
+    <Compile Include="Scripts\PullGitRepos.cs" />
     <Compile Include="VM\ScriptRunnerVM.cs" />
   </ItemGroup>
   <ItemGroup>
